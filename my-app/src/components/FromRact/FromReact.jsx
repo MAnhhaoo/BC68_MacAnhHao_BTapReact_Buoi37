@@ -1,8 +1,12 @@
 import React from 'react';
 import './FromReact.scss';
 import { useFormik } from 'formik';
+import { useState } from 'react';
+import TableForm from './TableForm';
 
 const FromReact = () => {
+  const [arrSinhvien,setarrSinhvien] = useState([])
+
   const {handleChange , values , handleSubmit} = useFormik({
     initialValues: {
       MSSV: "",
@@ -10,11 +14,13 @@ const FromReact = () => {
       phone: "",
       email: "",
     },
-    onSubmit: (values) => {
+    onSubmit: (values ,{resetForm} ) => {
       console.log(values);
+      setarrSinhvien([...arrSinhvien , values])
+      resetForm();
     },
   });
-
+console.log(arrSinhvien)
   return (
     <div className='container py-2 bg'>
       <div>
@@ -72,6 +78,7 @@ const FromReact = () => {
           <button type="submit" className='bg-green-500 rounded px-3 py-2 mt-6'>Thêm sinh viên</button>
         </form>
       </div>
+      <TableForm  arrSinhvien={arrSinhvien} />
     </div>
   );
 };
