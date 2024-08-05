@@ -96,7 +96,7 @@ const FromReact = () => {
       <div>
        
         <form onSubmit={formik.handleSubmit}>
-          <div className='grid grid-cols-2 gap-8'>
+          <div className='grid grid-cols-2 gap-8 mb-5'>
             <Input
               name='MSSV'
               placeholder='Nhập mã sinh viên của bạn'
@@ -141,14 +141,17 @@ const FromReact = () => {
               onBlur={formik.handleBlur}
               error={formik.errors.email}
               touched={formik.touched.email}
+              
             />
           </div>
+          <label htmlFor="MSSV" className='block  absolute  '>Tìm kiếm </label>
           <input
           type='text'
           placeholder='Nhập MSSV'
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className='mr-4 p-2 border rounded w-60 '
+          className='mr-4 p-2 border rounded w-60 relative '
+          
         />
 
           <button type='submit' className='bg-green-500 rounded px-3 py-2 mt-6'>Thêm sinh viên</button>
